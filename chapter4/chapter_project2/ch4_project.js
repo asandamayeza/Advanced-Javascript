@@ -1,4 +1,4 @@
-let fName = prompt("what is your name ?").toLowerCase();
+let fName = prompt("what is your name ?");
 let message;
 switch (fName) {
     case "asanda":

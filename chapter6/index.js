@@ -107,13 +107,13 @@
 // })();
 
 /*****recursive functions** */
-// function getRecursive(nr) {
-//     console.log(nr);
-//     if (nr > 0) {
-//       getRecursive(--nr);
-//     }
-//   }
-//   getRecursive(3);
+function getRecursive(nr) {
+    console.log(nr);
+    if (nr > 0) {
+      getRecursive(--nr);
+    }
+  }
+  getRecursive(3);
 // function logRecursive(nr) {
 //     console.log("Started function:", nr);
 //     if (nr > 0) {
@@ -126,15 +126,15 @@
 //   logRecursive(3);
 
 /*****nested functions** */
-function doOuterFunctionStuff(nr) {
-    console.log("Outer function");
-    doInnerFunctionStuff(nr);
-    function doInnerFunctionStuff(x) {
-        console.log(x + 7);
-        console.log("I can access outer variables:", nr);
-    }
-}
-doOuterFunctionStuff(2);
+// function doOuterFunctionStuff(nr) {
+//     console.log("Outer function");
+//     doInnerFunctionStuff(nr);
+//     function doInnerFunctionStuff(x) {
+//         console.log(x + 7);
+//         console.log("I can access outer variables:", nr);
+//     }
+// }
+// doOuterFunctionStuff(2);
 
 
 /*****annonymous functions** */
