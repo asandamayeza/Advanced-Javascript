@@ -8,7 +8,7 @@ function three() {
 }
 function four() {
     console.log("Four");
-    setTimeout(one, 1000);
+    setTimeout(one, 1000);//ms
     three();
 }
 four();

@@ -112,29 +112,49 @@
 // }
 
 //exercise 4.4
-let randomNumber = Math.floor(Math.random() * 6);
-let input = string(prompt("ask me anything"))
+// const randomNumber = Math.floor(Math.random() * 6);
+// let answer = "Something went wrong";
+// let question = prompt("Ask me anything");
+// switch (randomNumber) {
+//     case 0:
+//         answer = "It will work out";
+//         break;
+//     case 1:
+//         answer = "Maybe, maybe not";
+//         break;
+//     case 2:
+//         answer = "Probably not";
+//         break;
+//     case 3:
+//         answer = "Highly likely";
+//         break;
+//     default:
+//         answer = "I don't know about that";
+// }
+// let output = "You asked me " + question + ". I think that " + answer;
+// console.log(output);
 
-switch (activity) {
-    case "0":
-        console.log("a ");
+//exercise 4.5
+
+let prize = prompt("Pick a number 0-10");
+prize = Number(prize);
+let output = "My Selection: ";
+switch (prize){
+    case 0: 
+        output += "Gold ";
+    case 1:
+        output += "Coin ";
         break;
-    case "1":
-        console.log("d");
+    case 2:
+        output += "Big ";
+    case 3:
+        output += "Box of ";
+    case 4:
+        output += "Silver ";
+    case 5:
+        output += "Bricks ";
         break;
-    case "2":
-        console.log("f");
-        break;
-    case "3":
-        console.log("c");
-        break;
-    case "4":
-        console.log("d");
-        break;
-    case "5":
-        console.log("r");
-        break;
-    default: 
-    console.log("w");
-    break;
+    default:
+        output += "Sorry Try Again";
 }
+console.log(output);

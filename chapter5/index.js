@@ -31,23 +31,22 @@
 // console.log(fibonacciArray)
 
 //exercise 5.1
-
-// let maxValue = 10;
-// let ran = Math.floor(Math.random()* maxValue) + 1;
-// console.log(ran)
-// let track = false;
-// while (track) {
-//     let guess = Number(prompt("enter a number between 1 - 10"));
-//     guess = Number(guess);
-//     if (guess === ranNumber){
-//         correct = true;
-//         console.log("You got it " + ranNumber);
-//     }else if (guess > ranNumber) {
-//         console.log("Too high");
-//     } else {
-//         console.log("Too Low");
-//     }
-// }
+const max = 5;
+const ranNumber = Math.floor(Math.random() * max) + 1;
+//console.log(ranNumber);
+let correct = false;
+while (!correct) {
+    let guess = prompt("Guess a Number 1 - " + max);
+    guess = Number(guess);
+    if (guess === ranNumber) {
+        correct = true;
+        console.log("You got it " + ranNumber);
+    } else if (guess > ranNumber) {
+        console.log("Too high");
+    } else {
+        console.log("Too Low");
+    }
+} 
 
 //do while loops 
 // let number;
