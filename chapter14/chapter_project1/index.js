@@ -1,12 +1,12 @@
 const canvas = document.createElement("canvas");
 const ctx = canvas.getContext("2d");
 canvas.setAttribute("width", "500");
-canvas.setAttribute("height", "500");
+canvas.setAttribute("height", "400");
 document.body.prepend(canvas);
 const colVal = [];
-for (let x = 0; x < 50; x++) {
+for (let x = 0; x < 50; x++)
     colVal.push(0);
-}
+
 function matrix() {
     ctx.fillStyle = "rgba(0,0,0,.05)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);

@@ -7,8 +7,10 @@ const savedValue = localStorage.getItem("countdown") || false; if (savedValue) {
     let inputValue = new Date(savedValue); endDate.valueAsDate = inputValue;
 }
 endDate.addEventListener("change", function (e) {
-    e.preventDefault(); clearInterval(timeInterval);
-    const temp = new Date(endDate.value); localStorage.setItem("countdown", temp);
+    e.preventDefault(); 
+    clearInterval(timeInterval);
+    const temp = new Date(endDate.value); 
+    localStorage.setItem("countdown", temp);
      startClock(temp);
     timeStop = true;
 });
