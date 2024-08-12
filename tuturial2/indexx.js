@@ -52,7 +52,7 @@
 
 // function fetchData(callback) {
 //     setTimeout(() => {
-//         const data = {name: "Bhabha", age: 28};
+//         const data = {name: "Asanda", age: 24};
 //         callback(data);
 //     }, 3000);
 // };
