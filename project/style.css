@@ -1,0 +1,149 @@
+h1,
+h2 {
+	text-align: center;
+}
+
+body {
+	font-family: Arial, sans-serif;
+	margin: 20px;
+}
+
+#events {
+	margin-bottom: 20px;
+	padding: 20px;
+	background-color: lightblue;
+	border: 1px solid #ddd;
+}
+
+#new-event {
+	margin-top: 20px;
+	padding: 20px;
+	background-color: #fff;
+	border: 1px solid #ddd;
+}
+
+#event-name,
+#event-date,
+#event-description {
+	width: 100%;
+	height: 40px;
+	padding: 10px;
+	font-size: 16px;
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+}
+
+
+.event {
+	margin-bottom: 20px;
+	padding: 20px;
+	background-color: whitesmoke;
+	border: 1px solid #ddd;
+	width: 40;
+
+}
+
+.event h2 {
+	margin-top: 0;
+}
+
+.event p {
+	margin-bottom: 10px;
+}
+
+.event button {
+	margin-right: 10px;
+}
+
+#add-event-form {
+	display: flex;
+	background-color: whitesmoke;
+	flex-direction: column;
+	padding: 50px;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	width: 50%;
+	margin: 0 auto;
+
+}
+
+#add-event-form label {
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+#add-event-form input[type="text"],
+#add-event-form input[type="date"],
+#add-event-form textarea {
+	padding: 10px;
+	margin-bottom: 20px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	width: 100%;
+}
+
+#add-event-btn {
+	background-color: blue;
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	font-size: 16px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+#add-event-btn:hover {
+	background-color: rgb(90, 189, 222);
+}
+
+#add-event-btn:active {
+	background-color: #3492a7;
+}
+
+.event {
+	margin-bottom: 10px;
+	padding: 20px;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	width: 58%;
+	margin: 0 auto;
+}
+
+.event span {
+	display: inline-block;
+	width: 100px;
+	font-weight: bold;
+}
+
+.event .event-name {
+	font-size: 24px;
+	margin-bottom: 10px;
+}
+
+.event .event-date {
+	font-size: 18px;
+	color: #666;
+	margin-bottom: 10px;
+}
+
+.event .event-description {
+	font-size: 16px;
+	color: #777;
+}
+
+.event button,
+.event input[type="checkbox"] {
+	float: right;
+	margin-right: 10px;
+	background-color: red;
+	color: #fff;
+	border: none;
+	padding: 5px 5px;
+	font-size: 9px;
+	cursor: pointer;
+
+}
+
+
