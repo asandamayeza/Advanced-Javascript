@@ -6,6 +6,8 @@ const eventDescriptionInput = document.getElementById('event-description');
 const addEventBtn = document.getElementById('add-event-btn');
 const eventsContainer = document.getElementById('events-container');
 
+let currentEditId = null;
+
 // Load events from local storage
 const storedEvents = localStorage.getItem('events');
 if (storedEvents) {
@@ -21,27 +23,42 @@ form.addEventListener('submit', (e) => {
     const eventName = eventNameInput.value;
     const eventDate = eventDateInput.value;
     const eventDescription = eventDescriptionInput.value;
-    const event = { name: eventName, date: eventDate, description: eventDescription };
-    addEventToContainer(event);
-    addEventToLocalStorage(event);
+    const event = { id: currentEditId || new Date().getTime(), name: eventName, date: eventDate, description: eventDescription };
+
+    if (currentEditId) {
+        updateEventInLocalStorage(event);
+    } else {
+        addEventToLocalStorage(event);
+    }
+
+    addEventToContainer(event, true);
     form.reset();
+    currentEditId = null;
 });
 
 // Add event to container
+function addEventToContainer(event, isNew = false) {
+    let eventElement = document.querySelector(`[data-id="${event.id}"]`);
 
-function addEventToContainer(event) {
-    const eventElement = document.createElement('div');
-    eventElement.className = 'event';
+    if (!eventElement) {
+        eventElement = document.createElement('div');
+        eventElement.className = 'event';
+        eventElement.setAttribute('data-id', event.id);
+        eventsContainer.appendChild(eventElement);
+    }
+
     eventElement.innerHTML = `
-		<span>Name:</span> <span>${event.name}</span> <br></br>
-		<span>Date:</span> <span>${event.date}</span><br></br>
-        <span>Description:</span> <span>${event.description}</span>
+        <span>Name:</span> <span>${event.name}</span> <br>
+        <span>Date:</span> <span>${event.date}</span><br>
+        <span>Description:</span> <span>${event.description}</span><br>
+        <button class="delete-btn">Delete</button>
+        <button class="edit-btn">Edit</button>
+        <input type="checkbox">
+    `;
 
-		<button>Delete</button>
-        <button class = "edit-btn" data-id= "${event.id}">Edit</button>
-		<input type="checkbox">
-	`;
-    eventsContainer.appendChild(eventElement);
+    if (isNew) {
+        eventElement.scrollIntoView({ behavior: 'smooth' });
+    }
 }
 
 // Add event to local storage
@@ -56,39 +73,45 @@ function addEventToLocalStorage(event) {
     }
 }
 
-// Add event listener to delete button
-eventsContainer.addEventListener('click', (e) => {
-	if (e.target.tagName === 'BUTTON') {
-		const eventElement = e.target.parentNode;
-		const eventName = eventElement.querySelector('span:nth-child(2)').textContent;
-		removeEventFromLocalStorage(eventName);
-		eventElement.remove();
-	}
-});
-function handleEditButton (event){
-    const eventId = e.target.getAttributes('data-id')
-    const eventEdit = event.find(e=> e.id== eventId)
-    if (eventEdit){
-      eventNameInput.value = eventEdit.title;
-      eventDateInput.value = eventEdit.date;
-      addEventBtn.setAttribute('data-id',eventEdit.id)
-
+// Update event in local storage
+function updateEventInLocalStorage(updatedEvent) {
+    const storedEvents = localStorage.getItem('events');
+    if (storedEvents) {
+        let events = JSON.parse(storedEvents);
+        events = events.map(event => event.id === updatedEvent.id ? updatedEvent : event);
+        localStorage.setItem('events', JSON.stringify(events));
     }
 }
 
+// Add event listener to container for delete and edit buttons
+eventsContainer.addEventListener('click', (e) => {
+    const eventElement = e.target.closest('.event');
+    const eventId = eventElement.getAttribute('data-id');
 
-
-
+    if (e.target.classList.contains('delete-btn')) {
+        removeEventFromLocalStorage(eventId);
+        eventElement.remove();
+    } else if (e.target.classList.contains('edit-btn')) {
+        const storedEvents = localStorage.getItem('events');
+        if (storedEvents) {
+            const events = JSON.parse(storedEvents);
+            const eventToEdit = events.find(event => event.id == eventId);
+            if (eventToEdit) {
+                eventNameInput.value = eventToEdit.name;
+                eventDateInput.value = eventToEdit.date;
+                eventDescriptionInput.value = eventToEdit.description;
+                currentEditId = eventToEdit.id;
+            }
+        }
+    }
+});
 
 // Remove event from local storage
-function removeEventFromLocalStorage(eventName) {
+function removeEventFromLocalStorage(eventId) {
     const storedEvents = localStorage.getItem('events');
     if (storedEvents) {
         const events = JSON.parse(storedEvents);
-        const index = events.findIndex((event) => event.name === eventName);
-        if (index !== -1) {
-            events.splice(index, 1);
-            localStorage.setItem('events', JSON.stringify(events));
-        }
+        const updatedEvents = events.filter(event => event.id != eventId);
+        localStorage.setItem('events', JSON.stringify(updatedEvents));
     }
 }
